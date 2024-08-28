@@ -6,13 +6,24 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		int N = sc.nextInt();
 		int k = sc.nextInt();
+		int result = 0;
 		int[] intArr = new int[N];
+		int[] cutArr = new int[k];
  		for(int i = 0; i < intArr.length; i++) {
 			intArr[i] = sc.nextInt(); 
 		}
 		
 		Arrays.sort(intArr);
-
-		System.out.println(intArr[N - k]);
+		
+		cutArr = Arrays.copyOfRange(intArr, N - k, N);
+		
+		result = cutArr[0];
+		
+		for(int i = 0; i < cutArr.length; i++) {
+			if(result > cutArr[i]) {
+				result = cutArr[i];
+			}
+		}
+		System.out.println(result);
  	}
 }
